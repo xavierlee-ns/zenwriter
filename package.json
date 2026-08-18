@@ -1,0 +1,18 @@
+{
+  "name": "mindful-writing-assistant",
+  "version": "1.0.0",
+  "description": "A zen writing environment with AI-powered vibe checks",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.117.1",
+    "@google/genai": "^1.51.0",
+    "docx": "^9.6.1",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.0"
+  }
+}

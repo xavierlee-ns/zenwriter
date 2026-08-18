@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful Writing Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Top Bar -->
+    <header id="top-bar">
+      <div class="top-left">
+        <button id="zen-toggle" title="Toggle Zen Mode">
+          <span class="zen-icon">&#9775;</span>
+          <span class="zen-label">Zen Mode</span>
+        </button>
+      </div>
+      <div class="top-center">
+        <h1>Mindful Writing Assistant</h1>
+      </div>
+      <div class="top-right">
+        <div id="ai-status-widget">
+          <span id="ai-status-badge" class="status-badge status-checking" title="Checking AI availability…">&#8943; Checking</span>
+          <label id="ai-toggle-label" class="ai-toggle-label" for="ai-toggle" title="Force local mode — no AI calls will be made">
+            <input type="checkbox" id="ai-toggle">
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-text">Local only</span>
+          </label>
+        </div>
+        <div id="word-count">0 words</div>
+        <div id="timer-display">20:00</div>
+      </div>
+    </header>
+
+    <!-- Sprint Goal Bar -->
+    <div id="sprint-bar">
+      <div class="sprint-inner">
+        <label for="sprint-goal">Sprint Goal:</label>
+        <input type="text" id="sprint-goal" placeholder="e.g. Write the scene where Mom first forgets my name...">
+        <button id="start-sprint" class="btn-sprint">Start Sprint</button>
+        <button id="stop-sprint" class="btn-sprint btn-stop hidden">End Sprint</button>
+        <div id="sprint-progress" class="hidden">
+          <div id="sprint-progress-bar"><div id="sprint-progress-fill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Writing Area -->
+    <main id="main-area">
+      <!-- Last Paragraph Sidebar -->
+      <aside id="last-paragraph-panel">
+        <div class="panel-header">
+          <h3>Last Paragraph</h3>
+          <span class="panel-hint">Your anchor point</span>
+        </div>
+        <div id="last-paragraph-content">
+          <p class="placeholder-text">Your most recent paragraph will appear here as you write, so you always know where you left off.</p>
+        </div>
+      </aside>
+
+      <!-- Writing Area -->
+      <div id="editor-container">
+        <textarea
+          id="writing-area"
+          placeholder="Begin writing here. Let the words flow...
+
+Your story matters. The caregivers who will read this need to hear it.
+
+Start with what you see, what you feel, what you remember."
+          spellcheck="true"
+        ></textarea>
+      </div>
+
+      <!-- Feedback Panel -->
+      <aside id="feedback-panel" class="hidden">
+        <button id="close-feedback" class="close-btn">&times;</button>
+        <div id="feedback-content"></div>
+      </aside>
+    </main>
+
+    <!-- Vibe Check Notification -->
+    <div id="vibe-notification" class="hidden">
+      <div class="vibe-inner">
+        <div class="vibe-bell">&#127756;</div>
+        <p>Time for a <strong>Vibe Check</strong></p>
+        <p class="vibe-sub">Let's see where your writing energy is</p>
+        <div class="vibe-actions">
+          <button id="do-vibe-check" class="btn-vibe">Check My Vibe</button>
+          <button id="skip-vibe" class="btn-skip">Keep Writing</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Toolbar -->
+    <footer id="bottom-bar">
+      <button id="btn-vibe-now" class="tool-btn" title="Run a vibe check now">
+        &#127756; Vibe Check
+      </button>
+      <button id="btn-show-tell" class="tool-btn" title="Check for show vs tell">
+        &#128065; Show Don't Tell
+      </button>
+      <button id="btn-save" class="tool-btn" title="Save to browser">
+        &#128190; Save
+      </button>
+      <div class="export-dropdown">
+        <button id="btn-export" class="tool-btn" title="Export your writing">
+          &#128196; Export &#9662;
+        </button>
+        <div id="export-menu" class="dropdown-menu hidden">
+          <button id="btn-export-docx" class="dropdown-item">
+            <span class="dropdown-icon">&#128462;</span> Microsoft Word (.docx)
+          </button>
+          <button id="btn-export-gdoc" class="dropdown-item">
+            <span class="dropdown-icon">&#128196;</span> Google Docs (Direct to Drive)
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="hidden">
+    <div class="loading-content">
+      <div class="breathing-circle"></div>
+      <p class="loading-text">Taking a mindful pause...</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
